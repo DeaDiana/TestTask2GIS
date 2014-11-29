@@ -14,7 +14,7 @@ std::map <ArgumentsFlags, std::string> parseCommandLineIntoTheMapOfParameters(in
 		if('-' == argv[i][0]) {
 			switch (argv[i][1]) {
 			case 'f':
-				set_of_parameters[FILE_FLAG] = extractOneParameter(argc, argv, i +1, &end_position);
+				set_of_parameters[FILE_FLAG] = extractOneParameter(argc, argv, i + 1, &end_position);
 				i = end_position;
 				break;
 			case 'm':
@@ -37,6 +37,7 @@ std::map <ArgumentsFlags, std::string> parseCommandLineIntoTheMapOfParameters(in
 		return set_of_parameters;
 }
 
+// extractOneParameter is necessary for picking up the parameter, which contains space: -f Test 1.tst
 std::string extractOneParameter(int argc, char * argv[], int start_position, int * end_position)
 {
 	int j = 0;

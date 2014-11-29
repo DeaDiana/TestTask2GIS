@@ -4,11 +4,6 @@
 #include <map>
 #include <string>
 
-#define FLAG_VALUE_WORDS "words"
-#define FLAG_VALUE_CHKSUM "checksum"
-#define ERROR_MSG_NEPARAMS "There is not enough parameters"
-#define ERROR_MSG_COMMON "Something goes wrong, please look through the help. (The flag is -h)"
-
 enum ArgumentsFlags { 
 	FILE_FLAG, 
 	MODE_FLAG, 

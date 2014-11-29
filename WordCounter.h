@@ -9,7 +9,7 @@ class WordCounter
 public:
 	WordCounter(void);
 	~WordCounter(void);
-	static long countWords(const std::string &filename, const std::string &value);
+	static unsigned long long countWords(const std::string &filename, const std::string &value);
 private:
 	static std::vector<std::string> split (const std::string & text);
 };

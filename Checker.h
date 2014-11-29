@@ -8,7 +8,7 @@ class Checker
 public:
 	Checker(void);
 	~Checker(void);
-	static long countCheckSum(const std::string &filename);
+	static std::string countCheckSum(const std::string &filename);
 };
 
 #endif /*_CHECKER_H_*/
