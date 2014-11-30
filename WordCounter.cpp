@@ -17,6 +17,9 @@ WordCounter::~WordCounter(void) {
 //	countWords method returns the number of apearing the 'value' in the given file
 ZZ WordCounter::countWords(const std::string & filename, const std::string & value) {
 	std::ifstream in(filename);
+	if(!in.is_open()) {
+		throw WordCounterException("\nCould not open the file:\n\n" + filename);
+	}
 	// check
 	std::vector<std::string> words_amount;
 	std::vector<std::string>::iterator it;
@@ -26,6 +29,9 @@ ZZ WordCounter::countWords(const std::string & filename, const std::string & val
 	counter = 0L;
 	char buffer [BUFFER_SZ + 1] = { 0 };
 	in.read (buffer, BUFFER_SZ);
+	if (!in.good() && !in.eof()) {
+		throw WordCounterException("\nError with reading. The file:\n\n" + filename);
+	}
 	buffer[BUFFER_SZ] = '\0';
 	rnum = in.gcount();
 	while (BUFFER_SZ >= rnum) {
@@ -48,6 +54,9 @@ ZZ WordCounter::countWords(const std::string & filename, const std::string & val
 			break;
 		}
 		in.read (buffer, BUFFER_SZ);
+		if (!in.good() && !in.eof()) {
+			throw WordCounterException("\nError with reading. The file:\n\n" + filename);
+		}
 		buffer[BUFFER_SZ] = '\0';
 		rnum = in.gcount();
 	};
@@ -55,5 +64,6 @@ ZZ WordCounter::countWords(const std::string & filename, const std::string & val
 		counter++;
 		std::cout << counter << std::endl;
 	}
+	in.close();
 	return counter;
 }

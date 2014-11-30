@@ -8,7 +8,7 @@ the particular word in given file or calculate file's checksum.\n\n\
 Next flags are supported:\n\
 -f : Points name of file or full path to it.\n\
 -m : Mode could be pointed as 'checksum' or 'words'.\n\
-	In 'checksum' mode, app returns 32-bits checksum of givenfile.\n\
+	In 'checksum' mode, app returns 32-bits checksum of given file.\n\
 	In 'words' mode, app returns how many entries of some word in the file.\n\
 -v : Points the sought-for sequence of english letters.\n\n\
 Examples:\n\

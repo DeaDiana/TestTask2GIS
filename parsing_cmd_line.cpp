@@ -5,24 +5,35 @@ std::map <ArgumentsFlags, std::string> parseCommandLineIntoTheMapOfParameters(in
 {
 	std::map <ArgumentsFlags, std::string> set_of_parameters;
 	int i = 1;
-	int start_position = 0;
 	int end_position = argc;
-	while('-' != argv[i][0]) {
+	while((i < argc) && ('-' != argv[i][0])) {
 		i++;
 	}
 	while((i < argc)) {
 		if('-' == argv[i][0]) {
 			switch (argv[i][1]) {
 			case 'f':
-				set_of_parameters[FILE_FLAG] = extractOneParameter(argc, argv, i + 1, &end_position);
-				i = end_position;
-				break;
+				if ((i + 1) < argc) {
+					set_of_parameters[FILE_FLAG] = extractOneParameter(argc, argv, i + 1, &end_position);
+					i = end_position;
+					break;
+				} else {
+					throw ParseCmdLineException("\nAfter -f flag should be pointed a file path.");
+				}
 			case 'm':
-				set_of_parameters[MODE_FLAG] = argv[++i];
-				break;
+				if ((i + 1) < argc) {
+					set_of_parameters[MODE_FLAG] = argv[++i];
+					break;
+				} else {
+					throw ParseCmdLineException("\nAfter -m flag should be pointed the mode [words/checksum].");
+				}
 			case 'v':
-				set_of_parameters[VALUE_FLAG] = argv[++i];
-				break;
+				if ((i + 1) < argc) {
+					set_of_parameters[VALUE_FLAG] = argv[++i];
+					break;
+				} else {
+					throw ParseCmdLineException("\nAfter -v flag should be pointed a word.");
+				}
 			case 'h':
 				set_of_parameters[HELP_FLAG] = "";
 				break;
