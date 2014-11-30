@@ -62,7 +62,6 @@ ZZ WordCounter::countWords(const std::string & filename, const std::string & val
 	};
 	if (!value.compare(tail)) {
 		counter++;
-		std::cout << counter << std::endl;
 	}
 	in.close();
 	return counter;
